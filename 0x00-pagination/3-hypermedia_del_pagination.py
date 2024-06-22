@@ -41,7 +41,7 @@ class Server:
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """Implement an improved Hypermedia Pagination"""
         data = self.indexed_dataset()
-        assert index is not None and (0 <= index <= max(data.keys()))
+        assert index is not None and 0 <= index <= max(data.keys())
         pageData = []
         count = 0
         nextIndex = None

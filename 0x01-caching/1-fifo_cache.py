@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
-"""Task 1"""
-
-
+"""Task 1. FIFO caching"""
 from collections import OrderedDict
 from base_caching import BaseCaching
 
 
 class FIFOCache(BaseCaching):
-    """BaseCaching"""
+    """FIFO caching"""
     def __init__(self):
         """Initializes the class object"""
         super().__init__()

@@ -20,7 +20,7 @@ class LRUCache(BaseCaching):
                 out, _ = self.cache_data.popitem(True)
                 print("DISCARD:", out)
             self.cache_data[key] = item
-            self.cache_data.move_to_end(key,False)
+            self.cache_data.move_to_end(key, False)
         else:
             self.cache_data[key] = item
 

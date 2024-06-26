@@ -20,12 +20,12 @@ class LRUCache(BaseCaching):
                 out, _ = self.cache_data.popitem(True)
                 print("DISCARD:", out)
             self.cache_data[key] = item
-            self.cache_data.move_to_end(key, last=False)
+            self.cache_data.move_to_end(key,False)
         else:
             self.cache_data[key] = item
 
     def get(self, key):
         """Returns the value of the passed key"""
-        if not key or key not in self.cache_data.keys():
-            return
-        return self.cache_data[key]
+        if key and key in self.cache_data.keys():
+            self.cache_data.move_to_end(key, last=False)
+        return self.cache_data.get(key, None)

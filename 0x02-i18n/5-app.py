@@ -35,6 +35,7 @@ def get_user() -> Union[Dict, None]:
     return None
 
 
+@app.before_request
 def before_request() -> None:
     """
     Executed before all other functions and use get_user function to

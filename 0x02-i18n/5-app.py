@@ -24,15 +24,12 @@ users = {
         }
 
 
-def get_user() -> Union[Dict, None]:
+def get_user(login_as) -> Union[Dict, None]:
     """
     returns a user dictionary or
     None if the ID cannot be found or if login_as was not passed.
     """
-    login_id = request.args.get('login_as')
-    if login_id:
-        return users.get(int(login_id))
-    return None
+    return None if login_as is None else users.get(int(login_as))
 
 
 @app.before_request
@@ -48,9 +45,9 @@ def before_request() -> None:
 @babel.localeselector
 def get_locale() -> str:
     """Returns the page in the local language of the browser"""
-    locale = request.args.get('locale')
-    if locale in app.config['LANGUAGES']:
-        return locale
+    if 'locale' in request.args:
+        if request.args['locale'] in app.config['LANGUAGES']:
+            return request.args['locale']
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 

@@ -35,6 +35,7 @@ def get_user() -> Union[Dict, None]:
     return None
 
 
+@app.before_request
 def before_request() -> None:
     """
     Executed before all other functions and use get_user function to
@@ -47,7 +48,7 @@ def before_request() -> None:
 @babel.localeselector
 def get_locale() -> str:
     """Returns the page in the local language of the browser"""
-    locale = request.args.get("locale","")
+    locale = request.args.get("locale", "")
     if locale in app.config["LANGUAGES"]:
         return locale
     if g.user and g.user["locale"] in app.config["LANGUAGES"]:

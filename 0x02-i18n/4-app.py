@@ -2,7 +2,7 @@
 """Flask-Bable app"""
 from flask_babel import Babel
 # Aliasing render_template to renTemp
-from flask import Flask, render_template as renTemp
+from flask import Flask, render_template as renTemp, request
 
 
 class Config:

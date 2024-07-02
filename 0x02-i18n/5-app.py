@@ -40,8 +40,8 @@ def before_request() -> None:
     Executed before all other functions and use get_user function to
     to find a user if any, and set it as a global on flask.g.user.
     """
-    user = get_user()
-    g.user = user
+    login_as = request.args.get('login_as', None)
+    g.user = get_user(login_as)
 
 
 @babel.localeselector

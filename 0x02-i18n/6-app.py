@@ -29,9 +29,9 @@ def get_user() -> Union[Dict, None]:
     returns a user dictionary or
     None if the ID cannot be found or if login_as was not passed.
     """
-    ID = request.args.get("login_as")
+    ID = request.args.get("login_as", "")
     if ID:
-        return users.get(int(ID))
+        return users.get(int(ID), None)
     return None
 
 
@@ -47,7 +47,7 @@ def before_request() -> None:
 @babel.localeselector
 def get_locale() -> str:
     """Returns the page in the local language of the browser"""
-    locale = request.args.get("locale")
+    locale = request.args.get("locale","")
     if locale in app.config["LANGUAGES"]:
         return locale
     if g.user and g.user["locale"] in app.config["LANGUAGES"]:

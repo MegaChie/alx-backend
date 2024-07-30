@@ -3,7 +3,7 @@ const queue = kue.createQueue();
 
 const jobData = {
   phoneNumber: '1234567890',
-  message: 'Ding-Dong, a job hust came in'
+  message: 'Ding-Dong, a job just came in'
 };
 
 const job = queue.create('push_notification_code', jobData)
